@@ -71,8 +71,11 @@ def recursion_prase_img(url,path):
 
 def recursion_prase_dir(soup):
     first=soup.find_all("a",{"class":"nrlj"})
-    for i in range(10,20):
+    for i in range(20,21):
         print("***"+first[i]["title"],i)
+        with open("F:/youmin/note.txt","w") as w:
+            w.write("%d \n"%i)
+            w.close()
    # for f in first:
     #    print("***",f["title"])
         name =first[i]["title"]
@@ -93,7 +96,7 @@ def recursion_prase_dir(soup):
            recursion_prase_dir(soup_new)
             
 if __name__=="__main__":
-    req=url_connect("http://so.gamersky.com/?s=%u52a8%u6001%u56fe&node=20&p=3")
+    req=url_connect("http://so.gamersky.com/?s=%u52a8%u6001%u56fe&node=20&p=7")
     soup=BeautifulCreat(req)
     
     recursion_prase_dir(soup)  
